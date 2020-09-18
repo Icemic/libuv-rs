@@ -124,6 +124,7 @@ fn uvret(code: ::std::os::raw::c_int) -> Result<()> {
 
 mod inner;
 use inner::*;
+pub use inner::Inner;
 
 pub mod error;
 pub use error::Error::*;

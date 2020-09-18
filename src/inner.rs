@@ -75,8 +75,7 @@ where
 
 /// Many structs are thin wrappers around structs from libuv_sys2 - the Inner trait extracts the
 /// wrapped struct.
-#[doc(hidden)]
-pub(crate) trait Inner<T>: Sized {
+pub trait Inner<T>: Sized {
     fn inner(&self) -> T;
 }
 
