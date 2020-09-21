@@ -2,7 +2,8 @@
 extern crate bitflags;
 
 #[macro_use]
-extern crate libuv_sys2 as uv;
+pub extern crate libuv_sys2 as uv;
+pub use uv::*;
 
 macro_rules! callbacks {
     ($($v:vis $Name:ident($($($a:ident: $T:ty),+)?)$( -> $TReturn:ty)?);+;) => {
