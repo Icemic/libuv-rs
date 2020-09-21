@@ -6,27 +6,23 @@ use std::string::ToString;
 use uv::{uv_ip4_addr, uv_ip4_name, uv_ip6_addr, uv_ip6_name, AF_INET, AF_INET6};
 
 /// An internal version of From<T>
-#[doc(hidden)]
-pub(crate) trait FromInner<T>: Sized {
+pub trait FromInner<T>: Sized {
     fn from_inner(_: T) -> Self;
 }
 
 /// An internal version of Into<T>
-#[doc(hidden)]
-pub(crate) trait IntoInner<T>: Sized {
+pub trait IntoInner<T>: Sized {
     fn into_inner(self) -> T;
 }
 
 /// An internal version of TryFrom<T>
-#[doc(hidden)]
-pub(crate) trait TryFromInner<T>: Sized {
+pub trait TryFromInner<T>: Sized {
     type Error;
     fn try_from_inner(_: T) -> Result<Self, Self::Error>;
 }
 
 /// An internal version of TryInto<T>
-#[doc(hidden)]
-pub(crate) trait TryIntoInner<T>: Sized {
+pub trait TryIntoInner<T>: Sized {
     type Error;
     fn try_into_inner(self) -> Result<T, Self::Error>;
 }
@@ -80,7 +76,6 @@ pub trait Inner<T>: Sized {
 }
 
 /// Inner lifts over &
-#[doc(hidden)]
 impl<T, U> Inner<U> for &T
 where
     T: Inner<U>,
@@ -91,7 +86,6 @@ where
 }
 
 /// Inner lefts over &mut
-#[doc(hidden)]
 impl<T, U> Inner<U> for &mut T
 where
     T: Inner<U>,
